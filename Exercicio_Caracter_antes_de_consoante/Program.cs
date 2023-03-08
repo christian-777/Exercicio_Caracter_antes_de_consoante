@@ -2,35 +2,41 @@
 {
     private static void Main(string[] args)
     {
-        bool valida=false;
-        string parametro, resultado="", letra;
-        string consoante = "bcdfghjklmnpqrstvwxyz";
+        string original, alterada;
 
-        Console.WriteLine("digite o parametro a ser auterado: ");
-        parametro = Console.ReadLine();
+        original = Console.ReadLine();
 
-        Console.WriteLine("digite a letra que deseja inserir: ");
-        letra = Console.ReadLine();
+        alterada = insereCaracter(original);
 
-        for(int i = 0; i <parametro.Length; i++)
+        Console.WriteLine(alterada);
+
+
+        string insereCaracter(string original)
         {
-            valida = false;
-            for(int j = 0; j <consoante.Length; j++) 
+            string alterada = "";
+            char[] aux = new char[original.Length * 2];
+
+            for (int i = 0, j = 0; i < original.Length; i++)
             {
-                if (parametro[i] == consoante[j])
+                if ((original[i] != 'a') && (original[i] != 'e') && (original[i] != 'i') && (original[i] != 'o') && (original[i] != 'u'))
                 {
-                    valida = true;
-                    break;
+                    aux[j + 1] = original[i];
+                    aux[j] = '.';
+                    j += 2;
+                }
+                else
+                {
+                    aux[j] = original[i];
+                    j++;
                 }
             }
-            if (valida)
+            for (int i = 0; i < aux.Length; i++)
             {
-                resultado += letra;
+                alterada += aux[i];
             }
-            resultado += parametro[i];
-           
+
+            return alterada;
         }
-        Console.WriteLine(resultado);
 
     }
 }
