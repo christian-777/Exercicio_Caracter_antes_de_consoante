@@ -26,12 +26,9 @@
             if (valida)
             {
                 resultado += letra;
-                resultado += parametro[i];
             }
-            else
-            {
-                resultado += parametro[i];
-            }
+            resultado += parametro[i];
+           
         }
         Console.WriteLine(resultado);
 
